@@ -1,5 +1,6 @@
 import cardData from "../data/data";
 import Count from "./Count";
+import Heart from "./Heart";
 
 import React from "react";
 import {
@@ -11,8 +12,6 @@ import {
   Typography,
 } from "@mui/material";
 
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
@@ -20,10 +19,10 @@ export default function HobbyCard() {
   let [like, setLike] = React.useState(Array(cardData.length).fill(false));
   let [count, setCount] = React.useState(Array(cardData.length).fill(0));
 
-  const handleLike = (i) => {
+  const handleLike = (i, is_filled) => {
     setLike((prev) => {
       let updatedArr = [...prev];
-      updatedArr[i] = !updatedArr[i];
+      updatedArr[i] = is_filled;
       return updatedArr;
     });
   };
@@ -64,12 +63,20 @@ export default function HobbyCard() {
                   >
                     {card.icon}
                   </CardMedia>
-                  <Box
+                  {/* <Box
                     sx={{ position: "absolute", top: "4%", left: "2%" }}
                     onClick={() => handleLike(index)}
                   >
                     {like[index] ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                  </Box>
+                  </Box> */}
+                  {/* Replaced lines above with line below */}
+                  <Heart
+                    // isFilled is either true or false
+                    isFilled={like[index]}
+                    handleLike={(_is_filled) => {
+                      handleLike(index, _is_filled);
+                    }}
+                  />
                   <Box
                     sx={{
                       position: "absolute",
