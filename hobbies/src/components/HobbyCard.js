@@ -1,4 +1,5 @@
 import cardData from "../data/data";
+import Count from "./Count";
 
 import React from "react";
 import {
@@ -89,7 +90,9 @@ export default function HobbyCard() {
                       />
                       <ArrowUpwardIcon onClick={() => handleUpvote(index)} />
                     </Box>
-                    <Typography>{count[index]} votes</Typography>
+                    <Count number={count[index]} />
+                    {/* Replaced the line below with the line above */}
+                    {/* <Typography>{count[index]} votes</Typography> */}
                   </Box>
                 </Box>
                 <CardContent>
