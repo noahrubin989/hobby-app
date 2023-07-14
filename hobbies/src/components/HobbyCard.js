@@ -15,7 +15,7 @@ import {
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
-export default function HobbyCard() {
+export default function HobbyCard(props) {
   let [like, setLike] = React.useState(Array(cardData.length).fill(false));
   let [count, setCount] = React.useState(Array(cardData.length).fill(0));
 
@@ -44,8 +44,11 @@ export default function HobbyCard() {
   };
 
   return (
-    <Box>
-      <Grid container spacing={2} sx={{ padding: "2%" }}>
+    <Box sx={{ paddingX: "2%" }}>
+      <Typography variant="h6" sx={{ paddingY: "4px" }}>
+        Hey {props.givenName}: Here are some recommended hobbies for you
+      </Typography>
+      <Grid container spacing={2}>
         {cardData.map((card, index) => {
           return (
             <Grid item xs={12} sm={6} md={4} key={index}>
